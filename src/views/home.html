@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8" />
+   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+   <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+   <link rel="stylesheet" href="../styles/app.css">
+   <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+   <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   <title>Desk Habitum</title>
+</head>
+
+<body>
+   <header class="p-3 border-bottom">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col">
+               <div class="row align-items-center">
+                  <div class="col-2">
+                     <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <img src="../img/circularLogo.png" alt="mdo" width="50" height="50" class="rounded-circle">
+                     </a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col">
+               <ul class="nav col-lg-auto me-lg-auto mb-2 mb-md-0 align-items-center justify-content-center">
+                  <li><a class="nav-link px-1 link-secondary">Reconocimiento: <span id="statusMonitoring">Desactivado</span></a></li>
+               </ul>
+            </div>
+
+            <div class="col">
+               <div class="dropdown text-end">
+                  <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                     <span class="m-1" id="username"></span>
+                     <img src="../img/profile.jpeg" alt="mdo" width="32" height="32" class="rounded-circle">
+                  </a>
+                  <ul class="dropdown-menu text-small dropdown-menu-end">
+                     <li><a id="perfil" class="dropdown-item" href="#">Perfil</a></li>
+                     <li><a id="setting" class="dropdown-item" href="#">Configuraciones</a></li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li data-bs-toggle="modal"
+                     data-bs-target="#modalLogout"><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <div class="custom-bg">
+      <div class="container">
+         <div class="row align-items-start">
+            <div class="col">
+               <h2>Desk Habitum</h2>
+               <p class="pt-2 text-secondary">Activa el monitoreo para que la aplicación
+                  comience el reconocimiento de malos hábitos a través de la webcam.
+                  Además, puedes <a id="settingLink" href="#">configurar</a> el reconocimiento según tus
+                  necesidades.</p>
+               <div id="divActivateBtn" class="pt-2">
+                  <button id="activateBtn" type="button" class="btn btn-success" data-bs-toggle="modal"
+                     data-bs-target="#modalActivar">Activar Monitoreo</button>
+               </div>
+               <div id="divDeactivateBtn" class="pt-2 oculto">
+                  <button id="deactivateBtn" type="button" class="btn btn-danger" data-bs-toggle="modal"
+                  data-bs-target="#modalDesactivar">Desactivar Monitoreo</button>
+               </div>
+               
+               <div id="loadingSpinner" class="d-none text-center">
+                  <div class="spinner-border" role="status">
+                  </div>
+                  <span>Cargando...</span>
+               </div>
+            </div>
+            <div class="col">
+               <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
+                  </div>
+                  <div class="carousel-inner">
+                     <div class="carousel-item active" data-bs-interval="5000">
+                        <img src="../img/reconocimientoAuto.jpg" class="d-block w-100 blur-image" height="260">
+                        <div class="carousel-caption d-none d-md-block carousel-text">
+                           <h5>Reconocimiento Automático</h5>
+                           <p>A través de modelos de Machine Learning, es posible reconocer distintas manías compulsivas y malos habitos
+                              utilizando la webcam de tu computador.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="carousel-item" data-bs-interval="5000">
+                        <img src="../img/morderUnha.jpg" class="d-block w-100 blur-image" height="260">
+                        <div class="carousel-caption d-none d-md-block carousel-text">
+                           <h5>Onicofagia / Nailbiting</h5>
+                           <p>Consiste en la manía de comer o morderse las uñas con los dientes. Entre un 20% y 30% de
+                              la
+                              población sufre esta patología.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="carousel-item" data-bs-interval="5000">
+                        <img src="../img/trico.png" class="d-block w-100 blur-image" height="260">
+                        <div class="carousel-caption d-none d-md-block carousel-text">
+                           <h5>Tricotilomanía</h5>
+                           <p>Tricotilomania consiste en jalarse impulsivamente el pelo hasta arrancarlo. Con Desk
+                              Habitum,
+                              podrás ser notificado cada vez que lo hagas.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="carousel-item" data-bs-interval="5000">
+                        <img src="../img/derma.jpg" class="d-block w-100 blur-image" height="260">
+                        <div class="carousel-caption d-none d-md-block carousel-text">
+                           <h5>Dermatilomanía</h5>
+                           <p>Las personas con este trastorno se pellizcan o arañan la piel repetidamente. Algunas
+                              personas
+                              incluso se pellizcan piel sana.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="carousel-item" data-bs-interval="5000">
+                        <img src="../img/nariz.jpeg" class="d-block w-100 blur-image" height="260">
+                        <div class="carousel-caption d-none d-md-block carousel-text">
+                           <h5>Rinotilexomanía</h5>
+                           <p>Esta manía se caracteriza por el rascado de la cavidad nasal de forma compulsiva. Aunque
+                              raramente
+                              conlleva a lesiones graves, puede llegar a producir autolesiones importantes.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="carousel-item" data-bs-interval="5000">
+                        <img src="../img/postura.jpeg" class="d-block w-100 blur-image" height="260">
+                        <div class="carousel-caption d-none d-md-block carousel-text">
+                           <h5>Malos habitos</h5>
+                           <p>Desk Habitum tambien reconoce cuando tienes mala postura frente al computador, cuando
+                              muerdes objetos no comestibles y detecta señales de fatiga visual.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="custom-bg-2">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col">
+               <div class="card text-center bg-transparent">
+                  <div class="card-bg">
+                     <img class="card-img-top" src="../img/dashboard2.png" alt="Card image cap">
+                     <div class="card-body">
+                        <h5 class="card-title">Dashboards</h5>
+                        <p class="card-text">Aquí puedes visualizar dashboards e indicadores.</p>
+                        <a href="./dashboard.html" class="btn btn-success">Ver Dashboards</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div class="card text-center bg-transparent">
+                  <div class="card-bg">
+                     <img class="card-img-top" src="../img/respiration2.png" alt="Card image cap">
+                     <div class="card-body">
+                        <h5 class="card-title">Toma una pausa</h5>
+                        <p class="card-text">Encontraras técnicas de respiración profunda para relajarte.</p>
+                        <a href="./deepbreath.html" class="btn btn-success">Respira</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div class="card text-center bg-transparent">
+                  <div class="card-bg">
+                     <img class="card-img-top" src="../img/pomodoro2.png" alt="Card image cap">
+                     <div class="card-body">
+                        <h5 class="card-title">Aumenta tu productividad</h5>
+                        <p class="card-text">Realiza sesiones de pomodoro a medida.</p>
+                        <a href="./pomodoro.html" class="btn btn-success">Ir a Pomodoro</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div class="card text-center bg-transparent">
+                  <div class="card-bg">
+                     <img class="card-img-top" src="../img/contact2.png" alt="Card image cap">
+                     <div class="card-body">
+                        <h5 class="card-title">Contacta un profesional</h5>
+                        <p class="card-text">No dudes en contactar si tu problema se agraba.</p>
+                        <a id="contactar" href="#" class="btn btn-success">Contactar</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Modal Activar-->
+   <div class="modal fade" id="modalActivar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
+            </div>
+            <div class="modal-body">
+               ¿Estás seguro que desear iniciar el monitoreo? Este proceso podría demorar algunos segundos.
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+               <button id="activateBtnModal" type="button" class="btn btn-primary" data-bs-dismiss="modal">Iniciar Monitoreo</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Modal Desactivar-->
+   <div class="modal fade" id="modalDesactivar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
+            </div>
+            <div class="modal-body">
+               ¿Estás seguro que desear desactivar el monitoreo?
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+               <button id="deactivateBtnModal" type="button" class="btn btn-danger" data-bs-dismiss="modal">Detener Monitoreo</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Modal Cerrar Sesión-->
+   <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
+            </div>
+            <div class="modal-body">
+               ¿Estás seguro que deseas cerrar sesión?
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+               <button id="logoutBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar Sesión</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+<script src="../renders/home.js"></script>
+
+</html>

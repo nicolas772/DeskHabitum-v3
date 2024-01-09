@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8" />
+   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+
+   <link rel="stylesheet" href="../styles/app.css">
+   <link rel="stylesheet" href="../styles/dashboard.css">
+   <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+   <title>Desk Habitum</title>
+</head>
+
+<body>
+   <header class="p-3 border-bottom">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col">
+               <div class="row align-items-center">
+                  <div class="col-2">
+                     <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <img src="../img/circularLogo.png" alt="mdo" width="50" height="50" class="rounded-circle">
+                     </a>
+                  </div>
+                  <div class="col">
+                     <ul class="nav">
+                        <li><a href="./home.html" class="nav-link px-2 text-secondary">Volver a Home</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col">
+               <ul class="nav col-lg-auto me-lg-auto mb-2 mb-md-0 align-items-center justify-content-center">
+                  <li><a class="nav-link px-1 link-secondary">Reconocimiento: <span
+                           id="statusMonitoring">Desactivado</span></a></li>
+               </ul>
+            </div>
+
+            <div class="col">
+               <div class="dropdown text-end">
+                  <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                     <span class="m-1" id="username"></span>
+                     <img src="../img/profile.jpeg" alt="mdo" width="32" height="32" class="rounded-circle">
+                  </a>
+                  <ul class="dropdown-menu text-small dropdown-menu-end">
+                     <li><a id="perfil" class="dropdown-item" href="#">Perfil</a></li>
+                     <li><a id="setting" class="dropdown-item" href="#">Configuraciones</a></li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li id="logoutBtn"><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <div class="p-2">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+         <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+               role="tab" aria-controls="home" aria-selected="true">Resumen Última Sesión</button>
+         </li>
+         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+               role="tab" aria-controls="profile" aria-selected="false">Histórico Manías</button>
+         </li>
+         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+               role="tab" aria-controls="contact" aria-selected="false">Histórico Malos Hábitos</button>
+         </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div>
+               <div id="container" class="pt-2">
+                  <div class="kpi-card orange">
+                     <span class="card-value">10m 2seg</span>
+                     <span class="card-text">Duración Última Sesión</span>
+                  </div>
+
+
+                  <div class="kpi-card purple">
+                     <span class="card-value">29</span>
+                     <span class="card-text">Cantidad Detecciones Totales</span>
+                  </div>
+
+                  <div class="kpi-card grey-dark">
+                     <span class="card-value">72,4% </span>
+                     <span class="card-text">Porcentaje Detecciones Manias </span>
+                  </div>
+
+                  <div class="kpi-card red">
+                     <span class="card-value">27,6%</span>
+                     <span class="card-text">Porcentaje Detecciones Malos Hábitos</span>
+                  </div>
+               </div>
+               <div class="container pt-3 p-1">
+                  <div class="row align-items-center">
+                     <div class="col">
+                        <div class="card">
+                           <div class="card-header">
+                              Detalle porcentual de manias
+                           </div>
+                           <div class="card-body">
+                              <div id="detallePorcentualManias"></div>
+                           </div>
+                        </div>
+                        <div class="card mt-1">
+                           <div class="card-header">
+                              Detalle porcentual de malos hábitos
+                           </div>
+                           <div class="card-body">
+                              <div id="detallePorcentualMalosHabitos"></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="card">
+                           <div class="card-header">
+                              Detecciones acumuladas en diferentes instantes de la última sesión
+                           </div>
+                           <div class="card-body">
+                              <div id="myChart1"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div>
+               <div id="container" class="pt-2">
+                  <div class="kpi-card orange">
+                     <span class="card-value">230</span>
+                     <span class="card-text">Cantidad Total Detecciones</span>
+                  </div>
+
+
+                  <div class="kpi-card purple">
+                     <span class="card-value">Onicofagia</span>
+                     <span class="card-text">Tu Principal Manía</span>
+                  </div>
+
+                  <div class="kpi-card grey-dark">
+                     <span class="card-value">67%</span>
+                     <span class="card-text">Promedio por sesión de tu Principal Manía</span>
+                  </div>
+
+                  <div class="kpi-card red">
+                     <span class="card-value">1m 13seg</span>
+                     <span class="card-text">Tiempo promedio por sesión de tu Principal Manía</span>
+                  </div>
+               </div>
+               <div class="container pt-3 p-1">
+                  <div class="row align-items-center">
+                     <div class="col">
+                        <div class="card">
+                           <div class="card-header">
+                              Cantidad Total por Manía
+                           </div>
+                           <div class="card-body">
+                              <div id="funnelManias"></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="card">
+                           <div class="card-header">
+                              Tendencia de manías en las últimas 5 sesiones
+                           </div>
+                           <div class="card-body">
+                              <div id="tendenciaManias"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div>
+               <div id="container" class="pt-2">
+                  <div class="kpi-card orange">
+                     <span class="card-value">170</span>
+                     <span class="card-text">Cantidad Total Detecciones</span>
+                  </div>
+
+
+                  <div class="kpi-card purple">
+                     <span class="card-value">Mala Postura</span>
+                     <span class="card-text">Tu Principal Mal Hábito</span>
+                  </div>
+
+                  <div class="kpi-card grey-dark">
+                     <span class="card-value">81%</span>
+                     <span class="card-text">Promedio por sesión de tu Principal Mal Hábito</span>
+                  </div>
+
+                  <div class="kpi-card red">
+                     <span class="card-value">3m 49seg</span>
+                     <span class="card-text">Tiempo promedio por sesión de tu Principal Mal Hábito</span>
+                  </div>
+               </div>
+               <div class="container pt-3 p-1">
+                  <div class="row align-items-center">
+                     <div class="col">
+                        <div class="card">
+                           <div class="card-header">
+                              Cantidad Total por Mal Hábito
+                           </div>
+                           <div class="card-body">
+                              <div id="funnelHabitos"></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="card">
+                           <div class="card-header">
+                              Tendencia de malos hábitos en las últimas 5 sesiones
+                           </div>
+                           <div class="card-body">
+                              <div id="tendenciaHabitos"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+</body>
+<script src="../renders/dashboard.js"></script>
+
+</html>

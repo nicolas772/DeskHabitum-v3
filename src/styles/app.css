@@ -1,0 +1,76 @@
+.mi-elemento {
+    margin-left: 10px;
+    /* Ajusta este valor según tus necesidades */
+}
+
+.blur-image {
+    /* Add the blur effect */
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+.carousel-text {
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/opacity/see-through */
+    color: white;
+    border: 3px solid #f1f1f1;
+}
+
+.custom-bg {
+    background-color: #f0f0f0;
+    /* Puedes ajustar este color según tus preferencias */
+    padding: 20px;
+    /* Añade un relleno para dar espacio al contenido dentro del contenedor */
+}
+
+.custom-bg-2 {
+    background-image: url('../img/greenBG.jpg');
+    /* Reemplaza 'ruta/de/tu/imagen.jpg' con la ruta real de tu imagen */
+    background-size: cover;
+    /* Ajusta el tamaño de la imagen para cubrir completamente el contenedor */
+    background-position: center;
+    /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    /* Puedes agregar más propiedades de fondo según tus necesidades */
+    padding: 21px;
+    /* Añade un relleno para dar espacio al contenido dentro del contenedor */
+}
+
+.card-bg {
+    background-color: rgba(255, 255, 255, 0.551);
+    border-radius: 5px;
+}
+
+#loadingSpinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos adicionales para centrar el texto y el spinner */
+#loadingSpinner span {
+    margin-bottom: 10px;
+    /* Ajusta el margen según tus necesidades */
+}
+
+.oculto {
+    display: none;
+}
+
+/* Aplica un color verde al texto de las pestañas no seleccionadas */
+.nav-tabs .nav-link {
+    color: rgb(15, 132, 99);
+}
+
+/* Aplica un color diferente al texto de la pestaña activa */
+.nav-tabs .nav-link.active {
+    color: #000;
+    /* Puedes ajustar este color según tus preferencias */
+}
+
+/* Aplica un color rojo al texto de la pestaña cuando el mouse está sobre ella */
+.nav-tabs .nav-link:hover {
+    color: rgb(15, 132, 99);
+}
