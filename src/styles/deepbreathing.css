@@ -12,11 +12,11 @@ html {
 
 body {
   align-items: center;
-  background-color: hsl(216, 33%, 97%);
-  color: hsl(201, 79%, 46%);
+  background-color: hsl(216, 33%, 97%);/* color 1 */
+  color: hsl(138, 79%, 46%);/* color 2 */
   display: flex;
   flex-direction: column;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
   height: 100%;
   justify-content: space-between;
   margin: 0;
@@ -28,19 +28,19 @@ body {
 
 .titlebar {
   align-items: center;
-  background: hsl(201, 79%, 46%);
+  background: hsl(201, 79%, 46%);/* color 2 */
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
 .title {
-  color: hsl(195, 97%, 75%);
+  color: hsl(195, 97%, 75%);/* color 3 */
   font-size: 1rem;
   letter-spacing: 0.2rem;
   margin: 1rem;
   margin-right: 0.8rem;
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
 }
 
 .title-link {
@@ -69,7 +69,7 @@ body {
 }
 
 .toggle_slider {
-  background-color: hsla(216, 33%, 97%, 50%);
+  background-color: hsla(216, 33%, 97%, 50%);/* color 4 */
   border-radius: var(--toggle-size);
   height: var(--toggle-size);
   position: relative;
@@ -78,7 +78,7 @@ body {
 }
 
 .toggle_slider:before {
-  background-color: hsl(216, 33%, 97%);
+  background-color: hsl(216, 33%, 97%);/* color 1 */
   border-radius: 100%;
   bottom: var(--toggle-padding);
   content: "";
@@ -90,22 +90,22 @@ body {
 }
 
 .toggle_input:checked + .toggle_slider {
-  background-color: hsl(32, 92%, 61%);
+  background-color: hsl(32, 92%, 61%);/* color 5 */
 }
 
 .toggle_input:checked + .toggle_slider:before {
-  background-color: hsl(216, 33%, 97%);
+  background-color: hsl(216, 33%, 97%);/* color 1 */
   transform: translateX(var(--toggle-size));
 }
 
 .toggle_text {
-  color: hsl(195, 97%, 75%);
+  color: hsl(195, 97%, 75%);/* color 3 */
   font-size: 1rem;
   letter-spacing: 0.2rem;
   margin: 1rem;
   margin-left: 0.5rem;
   margin-right: 0.8rem;
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
 }
 
 /**
@@ -114,8 +114,8 @@ body {
 
 .stage {
   align-items: center;
-  background: hsl(201, 79%, 46%);
-  background-image: linear-gradient(to bottom, hsl(201, 79%, 46%), hsl(195, 100%, 85%));
+  background: hsl(201, 79%, 46%);/* color 2 */
+  background-image: linear-gradient(to bottom, hsl(201, 79%, 46%), hsl(195, 100%, 85%));/* color 2 *//* color 6 */
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -125,7 +125,7 @@ body {
 
 .instruction {
   align-items: center;
-  color: hsl(216, 33%, 97%);
+  color: hsl(216, 33%, 97%);/* color 1 */
   display: flex;
   flex-direction: column;
   font-size: 1.5rem;
@@ -138,7 +138,7 @@ body {
   opacity: 0;
   padding: 1rem;
   text-align: center;
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
 }
 
 .note {
@@ -148,7 +148,7 @@ body {
 
 .animatron {
   /* The vars / custom properties get set in JS land */
-  background: linear-gradient(to bottom, hsl(195, 100%, 95%), hsl(195, 100%, 85%));
+  background: linear-gradient(to bottom, hsl(195, 100%, 95%), hsl(195, 100%, 85%));/* color 7 *//* color 6 */
   border-radius: 50% 50% 50% 50% / 100% 100% 0% 0%;
   transform: translateZ(0);
   height: 10vw;
@@ -160,10 +160,10 @@ body {
  */
 
 .control-panel {
-  background: linear-gradient(hsl(216, 33%, 97%), hsl(210, 16%, 82%));
+  background: linear-gradient(hsl(216, 33%, 97%), hsl(210, 16%, 82%));/* color 1 *//* color 8 */
   box-shadow:
-    0 -28px 28px hsla(201, 79%, 46%, 0.25),
-    0 -20px 10px hsla(201, 79%, 46%, 0.25);
+    0 -28px 28px hsla(201, 79%, 46%, 0.25),/* color 9 */
+    0 -20px 10px hsla(201, 79%, 46%, 0.25);/* color 9 */
   padding: 2rem 2rem 1rem;
   position: relative;
   width: 100%;
@@ -189,10 +189,10 @@ body {
 
 .control {
   align-items: center;
-  background: hsl(197, 92%, 61%);
+  background: hsl(197, 92%, 61%);/* color 10 */
   border: none;
   border-radius: 100%;
-  color: hsl(195, 100%, 95%);
+  color: hsl(195, 100%, 95%);/* color 7 */
   cursor: pointer;
   display: flex;
   font: inherit;
@@ -200,28 +200,28 @@ body {
   justify-content: center;
   padding: 0.5rem;
   position: relative;
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
   transition: background-color 0.5s;
   width: 4rem;
 }
 
 .control:hover {
-  background: hsl(201, 79%, 46%);
+  background: hsl(201, 79%, 46%);/* color 2 */
 }
 
 .control:focus {
-  background: hsl(201, 79%, 46%);
+  background: hsl(201, 79%, 46%);/* color 2 */
   outline: none; /* TODO: Outline when tabbing */
 }
 
 .control:active,
 .control.is-active {
-  background: hsl(204, 96%, 27%);
+  background: hsl(204, 96%, 27%);/* color 11 */
   cursor: wait;
 }
 
 .control[disabled] {
-  background: hsl(211, 10%, 53%);
+  background: hsl(211, 10%, 53%);/* color 12 */
   cursor: not-allowed;
 }
 
@@ -238,7 +238,7 @@ body {
 
 .footnote {
   animation: fadeIn 1s 1s forwards;
-  color: hsl(211, 13%, 65%);
+  color: hsl(211, 13%, 65%);/* color 13 */
   font-size: 0.8rem;
   line-height: 1rem;
   margin: 0;
@@ -258,7 +258,7 @@ body {
 
 .footnote > a:focus,
 .footnote > a:hover {
-  color: hsl(209, 20%, 25%);
+  color: hsl(209, 20%, 25%);/* color 14 */
   outline: none;
 }
 

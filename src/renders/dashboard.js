@@ -42,10 +42,13 @@ function mostrarDashboardUltimaSesión() {
    var options = {
       series: [11, 3, 2, 5],
       chart: {
-         width: 330,
+         width: 405,
          type: 'pie',
       },
-      labels: ['Onicofagia', 'Tricotilomanía', 'Dermatilomanía', 'Rinotilexomanía'],
+      labels: ['Onicofagia (morder uñas)', 
+      'Tricotilomanía (jalar cabello)', 
+      'Dermatilomanía (pellizcar piel)', 
+      'Rinotilexomanía (hurgar nariz)'],
       tooltip: {
          y: {
             formatter: function (val) {
@@ -183,16 +186,16 @@ function mostrarDashboardManias() {
          }
       },
       series: [{
-         name: 'Onicofagia',
+         name: 'Onicofagia (morder uñas)',
          data: [8, 12, 15, 16, 19]
       }, {
-         name: 'Tricotilomanía',
+         name: 'Tricotilomanía (jalar cabello)',
          data: [2, 3, 5, 7, 10]
       }, {
-         name: 'Dermatilomanía',
+         name: 'Dermatilomanía (pellizcar piel)',
          data: [0, 0, 3, 5, 8]
       }, {
-         name: 'Rinotilexomanía',
+         name: 'Rinotilexomanía (hurgar nariz)',
          data: [13, 10, 10, 8, 5]
       }],
       xaxis: {
