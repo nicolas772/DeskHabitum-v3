@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    logoutBtn.addEventListener('click', async () => {
       await window.api.logout();
    });
-   
+
    setting.addEventListener('click', async () => {
       await window.api.openSetting();
    });
@@ -96,20 +96,33 @@ function mostrarDashboardUltimaSesión() {
 
    var options2 = {
       chart: {
-         type: 'line'
+         type: 'line',
+         zoom: {
+            enabled: false
+         }
       },
       series: [{
-         name: 'Detecciones Acumuladas',
-         data: [0, 2, 10, 17, 29]
+         name: 'Manias Acumuladas',
+         data: [0, 8, 10, 17, 21]
+      },
+      {
+         name: 'Malos Hábitos Acumulados',
+         data: [0, 3, 5, 5, 8]
       }],
       xaxis: {
-         categories: ["Inicio", "1/4 Tiempo", "2/4 Tiempo", "3/4 Tiempo", "Final"]
+         categories: ["Inicio", "1/4 Tiempo", "2/4 Tiempo", "3/4 Tiempo", "Final"],
+         title: {
+            text: 'Tiempo transcurrido'
+         }
       },
       yaxis: {
          title: {
             text: 'Cantidad de Detecciones'
          }
-      }
+      },
+      legend: {
+         position: 'bottom',
+      },
    }
    var chart = new ApexCharts(document.getElementById('detallePorcentualManias'), options);
    chart.render();
@@ -162,56 +175,26 @@ function mostrarDashboardManias() {
    };
 
    var options2 = {
-      series: [{
-         name: 'Onicofagia',
-         data: [10, 4, 12, 25, 5]
-      }, {
-         name: 'Tricotilomanía',
-         data: [2, 3, 0, 2, 2]
-      }, {
-         name: 'Dermatilomanía',
-         data: [2, 0, 0, 5, 2]
-      }, {
-         name: 'Rinotilexomanía',
-         data: [0, 4, 2, 2, 0]
-      }],
       chart: {
-         type: 'bar',
+         type: 'line',
          height: 300,
-         width: 500,
-         stacked: true,
-         toolbar: {
-            show: true
-         },
          zoom: {
             enabled: false
          }
       },
-      responsive: [{
-         breakpoint: 480,
-         options: {
-            legend: {
-               position: 'top',
-               offsetX: -10,
-               offsetY: 0
-            }
-         }
+      series: [{
+         name: 'Onicofagia',
+         data: [8, 12, 15, 16, 19]
+      }, {
+         name: 'Tricotilomanía',
+         data: [2, 3, 5, 7, 10]
+      }, {
+         name: 'Dermatilomanía',
+         data: [0, 0, 3, 5, 8]
+      }, {
+         name: 'Rinotilexomanía',
+         data: [13, 10, 10, 8, 5]
       }],
-      plotOptions: {
-         bar: {
-            horizontal: false,
-            borderRadius: 5,
-            dataLabels: {
-               total: {
-                  enabled: true,
-                  style: {
-                     fontSize: '12px',
-                     fontWeight: 800
-                  }
-               }
-            }
-         },
-      },
       xaxis: {
          categories: [
             "02/12/2023",
@@ -220,14 +203,19 @@ function mostrarDashboardManias() {
             "20/12/2023",
             "27/12/2023"
          ],
+         title: {
+            text: 'Fecha sesión'
+         }
+      },
+      yaxis: {
+         title: {
+            text: 'Cantidad de Detecciones'
+         }
       },
       legend: {
-         position: 'top',
+         position: 'bottom',
       },
-      fill: {
-         opacity: 1
-      }
-   };
+   }
 
    var chart2 = new ApexCharts(document.getElementById("tendenciaManias"), options2);
    chart2.render();
@@ -279,53 +267,23 @@ function mostrarDashboardMalosHabitos() {
    };
 
    var options2 = {
+      chart: {
+         type: 'line',
+         height: 300,
+         zoom: {
+            enabled: false
+         }
+      },
       series: [{
          name: 'Mala Postura',
-         data: [8, 4, 7, 3, 5]
+         data: [8, 7, 6, 10, 12]
       }, {
          name: 'Fatiga Visual',
          data: [2, 2, 3, 4, 5]
       }, {
          name: 'Morder Objetos',
-         data: [3, 4, 5, 0, 0]
+         data: [3, 4, 5, 6, 7]
       }],
-      chart: {
-         type: 'bar',
-         height: 300,
-         width: 500,
-         stacked: true,
-         toolbar: {
-            show: true
-         },
-         zoom: {
-            enabled: false
-         }
-      },
-      responsive: [{
-         breakpoint: 480,
-         options: {
-            legend: {
-               position: 'top',
-               offsetX: -10,
-               offsetY: 0
-            }
-         }
-      }],
-      plotOptions: {
-         bar: {
-            horizontal: false,
-            borderRadius: 5,
-            dataLabels: {
-               total: {
-                  enabled: true,
-                  style: {
-                     fontSize: '12px',
-                     fontWeight: 800
-                  }
-               }
-            }
-         },
-      },
       xaxis: {
          categories: [
             "02/12/2023",
@@ -334,14 +292,19 @@ function mostrarDashboardMalosHabitos() {
             "20/12/2023",
             "27/12/2023"
          ],
+         title: {
+            text: 'Fecha sesión'
+         }
+      },
+      yaxis: {
+         title: {
+            text: 'Cantidad de Detecciones'
+         }
       },
       legend: {
-         position: 'top',
+         position: 'bottom',
       },
-      fill: {
-         opacity: 1
-      }
-   };
+   }
 
    var chart2 = new ApexCharts(document.getElementById("tendenciaHabitos"), options2);
    chart2.render();
