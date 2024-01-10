@@ -1,10 +1,23 @@
 // En tu archivo de renderizado
 document.addEventListener('DOMContentLoaded', async () => {
+    const divSubmitBtn = document.getElementById("divSubmitBtn");
+    const loadingSpinner = document.getElementById("loadingSpinner");
+    const submitBtn = document.getElementById("submitBtn");
     const name = document.getElementById('username');
     const statusMonitoring = document.getElementById('statusMonitoring')
 
     obtenerYMostrarDatos(name, statusMonitoring);
 
+
+    submitBtn.addEventListener("click", async function () {
+        divSubmitBtn.classList.add("oculto");
+        loadingSpinner.classList.remove("d-none");
+        setTimeout(async function () {
+            await window.api.enviarCorreoProfesional();
+            window.location.href = 'home.html';
+        }, 1500);
+
+    });
 });
 
 async function obtenerYMostrarDatos(name, statusMonitoring) {

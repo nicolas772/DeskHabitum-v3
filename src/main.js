@@ -295,7 +295,7 @@ ipcMain.handle('guardarCambiosSetting', (event, obj) => {
 });
 
 ipcMain.handle('enviarCorreoProfesional', (event, obj) => {
-  winContactar.close()
+  //winContactar.close()
   new Notification({
     title: "Contacto Profesional",
     body: `Correo enviado exitosamente. Espera la respuesta del profesional a través de tu correo electrónico.`,

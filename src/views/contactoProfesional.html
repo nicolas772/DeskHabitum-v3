@@ -7,10 +7,55 @@
    <link rel="stylesheet" href="../styles/app.css">
    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-   <title>Contacto Profesional</title>
+   <title>Desk Habitum</title>
 </head>
 
 <body>
+   <header class="p-3 border-bottom">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col">
+               <div class="row align-items-center">
+                  <div class="col-2">
+                     <a href="./home.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <img src="../img/circularLogo.png" alt="mdo" width="50" height="50" class="rounded-circle">
+                     </a>
+                  </div>
+                  <div class="col">
+                     <ul class="nav">
+                        <li><a href="./home.html" class="nav-link px-2 text-secondary">Volver a Inicio</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col">
+               <ul class="nav col-lg-auto me-lg-auto mb-2 mb-md-0 align-items-center justify-content-center">
+                  <li><a class="nav-link px-1 link-secondary">Reconocimiento: <span id="statusMonitoring">Desactivado</span></a></li>
+               </ul>
+            </div>
+
+            <div class="col">
+               <div class="dropdown text-end">
+                  <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                     <span class="m-1" id="username"></span>
+                     <img src="../img/profile.jpeg" alt="mdo" width="32" height="32" class="rounded-circle">
+                  </a>
+                  <ul class="dropdown-menu text-small dropdown-menu-end">
+                     <li><a id="perfil" class="dropdown-item" href="#">Perfil</a></li>
+                     <li><a id="setting" class="dropdown-item" href="#">Configuraciones</a></li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li data-bs-toggle="modal"
+                     data-bs-target="#modalLogout"><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
    <div class="container p-4 pb-0">
       <div class="pb-2">
          <h4>Escoge un Profesional</h4>
@@ -32,9 +77,7 @@
                               <h5 class="card-title">Dr. Joaquín Liras</h5>
                               <p class="card-text fs-6">
                                  Oftalmólogo de la Universidad Católica de Chile, experto en la prevención de
-                                 riesgos visuales y fatiga ocular para todas las edades, con especial atención a la
-                                 exposición frente al
-                                 computador.
+                                 riesgos visuales y fatiga ocular para todas las edades.
                               </p>
                               <p class="card-text"><small class="text-muted">Fatiga Visual - Oftalmología</small></p>
                            </div>
@@ -54,11 +97,7 @@
                            <div class="card-body">
                               <h5 class="card-title">Dra. Alexa Olivares</h5>
                               <p class="card-text"> Psicóloga Clínica de la Universidad Católica de Chile, especializada
-                                 en
-                                 trastornos
-                                 compulsivos y ansiedad para todas las edades, con enfoque en manías compulsivas y
-                                 estrategias de
-                                 autocontrol.</p>
+                                 en trastornos compulsivos y con enfoque en manías compulsivas.</p>
                               <p class="card-text"><small class="text-muted">Ansiedad - Manías Compulsivas</small></p>
                            </div>
                         </div>
@@ -77,11 +116,7 @@
                            <div class="card-body">
                               <h5 class="card-title">Dra. Laura Perrier</h5>
                               <p class="card-text">Psicóloga Clínica de la Universidad Católica de Chile, especializada
-                                 en
-                                 manías compulsivas
-                                 y autoconocimiento para todas las edades. Enfoca su atención en estrategias para
-                                 comprender y transformar
-                                 impulsos compulsivos.</p>
+                                 en manías compulsivas y autoconocimiento para todas las edades.</p>
                               <p class="card-text"><small class="text-muted">Autocontrol - Manías Compulsivas</small>
                               </p>
                            </div>
@@ -101,11 +136,7 @@
                            <div class="card-body">
                               <h5 class="card-title">Dr. Michael Levi</h5>
                               <p class="card-text">Se especializa en abordar problemas de postura en pacientes de todas
-                                 las
-                                 edades.
-                                 Su enfoque integral se centra en evaluar y corregir posturas para mejorar la salud
-                                 musculoesquelética
-                                 y promover el bienestar general.</p>
+                                 las edades y corregir posturas para mejorar la salud musculoesquelética </p>
                               <p class="card-text"><small class="text-muted">Mala Postura - Bienestar general</small>
                               </p>
                            </div>
@@ -118,5 +149,5 @@
       </div>
    </div>
 </body>
-
+<script src="../renders/contactoProfesional.js"></script>
 </html>

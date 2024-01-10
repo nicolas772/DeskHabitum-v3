@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       await window.api.openPerfil();
    });
 
-   contactar.addEventListener('click', async () => {
+   /*contactar.addEventListener('click', async () => {
       await window.api.openContactar();
-   });
+   });*/
    
    activateBtnModal.addEventListener("click", async function () {
       divActivateBtn.classList.add("oculto");
