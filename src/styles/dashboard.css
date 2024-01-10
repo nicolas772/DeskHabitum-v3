@@ -33,7 +33,7 @@
   color: #fff;
 }
 
-.kpi-card {
+/*.kpi-card {
   overflow: hidden;
   position: relative;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
@@ -46,7 +46,7 @@
   min-width: 180px;
   margin-left: 0.5em;
   margin-top: 0.5em;
-}
+}*/
 
 .card-value {
   display: block;
@@ -56,7 +56,7 @@
 
 .card-text {
   display: block;
-  font-size: 70%;
+  font-size: 80%;
   padding-left: 0.2em;
 }
 
@@ -71,7 +71,7 @@
   position: relative;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
   display: inline-block;
-  padding: 1em;
+  padding: 0.7em;
   border-radius: 0.3em;
   font-family: sans-serif;
   width: 240px;
