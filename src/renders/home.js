@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', async () => {
    const data = await window.api.userData();
    const status = data.estadoMonitoreo
 
-   if (status === "Desactivado"){
+   if (status === "Desactivado") {
       divActivateBtn.classList.remove("oculto");
       divDeactivateBtn.classList.add("oculto");
-   }else {
+   } else {
       divDeactivateBtn.classList.remove("oculto");
       divActivateBtn.classList.add("oculto");
    }
@@ -49,15 +49,16 @@ document.addEventListener('DOMContentLoaded', async () => {
    /*contactar.addEventListener('click', async () => {
       await window.api.openContactar();
    });*/
-   
+
    activateBtnModal.addEventListener("click", async function () {
       divActivateBtn.classList.add("oculto");
       loadingSpinner.classList.remove("d-none");
       setTimeout(async function () {
          loadingSpinner.classList.add("d-none");
          await window.api.activateMonitoring();
-         const data = await window.api.userData();
-         statusMonitoring.innerText = `${data.estadoMonitoreo}`;
+         obtenerYMostrarDatos(name, statusMonitoring);
+         //const data = await window.api.userData();
+         //statusMonitoring.innerText = `${data.estadoMonitoreo}`;
          divDeactivateBtn.classList.remove("oculto");
       }, 5000);
    });
@@ -68,8 +69,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       setTimeout(async function () {
          loadingSpinner.classList.add("d-none");
          await window.api.deactivateMonitoring();
-         const data = await window.api.userData();
-         statusMonitoring.innerText = `${data.estadoMonitoreo}`;
+         //const data = await window.api.userData();
+         //statusMonitoring.innerText = `${data.estadoMonitoreo}`;
+         obtenerYMostrarDatos(name, statusMonitoring);
          divActivateBtn.classList.remove("oculto");
       }, 3000);
    });
@@ -80,6 +82,12 @@ async function obtenerYMostrarDatos(name, statusMonitoring) {
       const data = await window.api.userData();
       name.innerText = `Hola! ${data.user.nombre}`;
       statusMonitoring.innerText = `${data.estadoMonitoreo}`;
+      // Cambia el color del texto según el estado
+      if (data.estadoMonitoreo.toLowerCase() === 'desactivado') {
+         statusMonitoring.style.color = 'red';
+      } else if (data.estadoMonitoreo.toLowerCase() === 'activado') {
+         statusMonitoring.style.color = 'green';
+      }
       return data
    } catch (error) {
       console.error('Error al obtener los datos:', error);
