@@ -60,7 +60,8 @@
                   <ul class="dropdown-menu text-small dropdown-menu-end">
                      <li><a id="perfil" class="dropdown-item" href="#">Perfil</a></li>
                      <li><a id="setting" class="dropdown-item" href="#">Configuraciones</a></li>
-                     <li><a id="contactProfesional" class="dropdown-item" href="contactoProfesional.html">Contactar Profesional</a></li>
+                     <li><a id="contactProfesional" class="dropdown-item" href="contactoProfesional.html">Contactar
+                           Profesional</a></li>
                      <li>
                         <hr class="dropdown-divider">
                      </li>
@@ -76,12 +77,13 @@
       <div class="pb-2">
          <h4>Formulario</h4>
          <p class="text-secondary">
-            Completa el siguiente formulario para contactar a <strong id="profesional"></strong>, de profesión <strong id="profesion"></strong>. También puedes
+            Completa el siguiente formulario para contactar a <strong id="profesional"></strong>, de profesión <strong
+               id="profesion"></strong>. También puedes
             <a href="contactoProfesional.html">volver a seleccionar profesional</a>.
          </p>
       </div>
-      <div class="bg-light p-3 rounded">
-         <form>
+      <!-- <div class="bg-light p-3 rounded">
+         <form class="needs-validation" novalidate>
             <div class="row mb-3">
                <div class="col">
                   <label for="exampleInputEmail1" class="form-label">Nombre</label>
@@ -104,6 +106,9 @@
                      <option value="1">Presencial</option>
                      <option value="2">Online</option>
                   </select>
+                  <div class="valid-feedback">
+                     Looks good!
+                  </div>
                </div>
             </div>
             <div class="mb-3">
@@ -118,6 +123,61 @@
             <div class="spinner-border" role="status"></div>
             <span>Enviando...</span>
          </div>
+      </div> -->
+      <div class="bg-light p-3 rounded">
+         <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-6">
+               <label for="validationCustom01" class="form-label">Nombre</label>
+               <input type="text" class="form-control" id="validationCustom01" required>
+               <div class="invalid-feedback">
+                  Debes ingresar tu nombre.
+               </div>
+            </div>
+            <div class="col-md-6">
+               <label for="validationCustom02" class="form-label">Apellido</label>
+               <input type="text" class="form-control" id="validationCustom02" required>
+               <div class="invalid-feedback">
+                  Debes ingresar tu apellido.
+               </div>
+            </div>
+            <div class="col-md-6">
+               <label for="validationCustomUsername" class="form-label">Correo</label>
+               <div class="input-group has-validation">
+                  <input type="email" class="form-control" id="validationCustomUsername"
+                     aria-describedby="inputGroupPrepend" required>
+                  <div class="invalid-feedback">
+                     Debes ingresar un correo válido.
+                  </div>
+               </div>
+            </div>
+            
+            <div class="col-md-6">
+               <label for="validationCustom04" class="form-label">Tipo de consulta</label>
+               <select class="form-select" id="validationCustom04" required>
+                  <option selected disabled value="">Elige un tipo de consulta</option>
+                  <option>Presencial</option>
+                  <option>Online</option>
+               </select>
+               <div class="invalid-feedback">
+                  Debes seleccionar una opción.
+               </div>
+            </div>
+            <div class="col-md-12">
+               <label for="validationCustom05" class="form-label">Motivo de la consulta</label>
+               <textarea type="text" class="form-control" id="validationCustom05" rows="3" required></textarea>
+               <div class="invalid-feedback">
+                  Debes ingresar un motivo.
+               </div>
+            </div>
+            
+            <div class="col-12" id="divSubmitBtn">
+               <button id="submitBtn" class="btn btn-success" type="submit">Contactar Profesional</button>
+            </div>
+            <div id="loadingSpinner" class="d-none text-center">
+               <div class="spinner-border" role="status"></div>
+               <span>Enviando...</span>
+            </div>
+         </form>
       </div>
    </div>
 </body>
