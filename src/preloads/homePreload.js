@@ -9,5 +9,7 @@ contextBridge.exposeInMainWorld('api', {
   openPerfil: () => ipcRenderer.invoke('openPerfil'),
   openContactar: () => ipcRenderer.invoke('openContactar'),
   guardarCambiosSetting: () => ipcRenderer.invoke('guardarCambiosSetting'),
+  saveProfesional: (data) => ipcRenderer.invoke('saveProfesional', data),
+  getProfesional: () => ipcRenderer.invoke('getProfesional'),
   enviarCorreoProfesional: () => ipcRenderer.invoke('enviarCorreoProfesional'),
 });

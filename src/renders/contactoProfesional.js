@@ -2,6 +2,19 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const name = document.getElementById('username');
     const statusMonitoring = document.getElementById('statusMonitoring')
+    const ids = ['a1', 'a2', 'a3', 'a4']
+
+    ids.forEach(function (id) {
+        const link = document.getElementById(id)
+        link.addEventListener('click', async function (event) {
+            event.preventDefault();
+            const doctorName = link.getAttribute('doctor-name');
+            const profesion = link.getAttribute('profesion');
+            //console.log(doctorName)
+            await window.api.saveProfesional({doctorName: doctorName, profesion: profesion});
+            window.location.href = "contactoProfesionalForm.html"
+        });
+    });
 
     obtenerYMostrarDatos(name, statusMonitoring);
 

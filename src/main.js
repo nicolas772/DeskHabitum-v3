@@ -4,7 +4,8 @@ const db = require('./models');
 const authController = require('./controllers/auth.controller')
 const Store = require('electron-store');
 const userDataStore = new Store({ name: 'userData' });
-userDataStore.set('monitoreo', 'Desactivado'); // Puedes cambiar `true` por el valor que desees
+userDataStore.set('monitoreo', 'Desactivado');
+userDataStore.set('profesionalSeleccionado', "")
 
 if (require('electron-squirrel-startup')) app.quit();
 
@@ -301,6 +302,15 @@ ipcMain.handle('enviarCorreoProfesional', (event, obj) => {
     body: `Correo enviado exitosamente. Espera la respuesta del profesional a través de tu correo electrónico.`,
     icon: path.join(__dirname, 'src/img/logo.png')
   }).show()
-
 });
 
+ipcMain.handle('saveProfesional', (event, obj) => {
+  //const doctorName = obj.doctorName
+  userDataStore.set('profesionalSeleccionado', obj)
+})
+
+ipcMain.handle('getProfesional', (event, obj) => {
+  // Acceder a los datos almacenados
+  const profesional = userDataStore.get('profesionalSeleccionado', null);
+  return profesional;
+});
