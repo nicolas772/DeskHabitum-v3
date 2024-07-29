@@ -12,4 +12,5 @@ contextBridge.exposeInMainWorld('api', {
   saveProfesional: (data) => ipcRenderer.invoke('saveProfesional', data),
   getProfesional: () => ipcRenderer.invoke('getProfesional'),
   enviarCorreoProfesional: () => ipcRenderer.invoke('enviarCorreoProfesional'),
+  newNotification: () => ipcRenderer.invoke('newNotification')
 });

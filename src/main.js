@@ -153,9 +153,9 @@ const createDetectionWindow = () => {
     winDetection = new BrowserWindow({
       width: 1000,
       height: 800,
-      resizable: false,
+      show: false,
       webPreferences: {
-        preload: path.join(__dirname, './preloads/detectionPreload.js'),
+        preload: path.join(__dirname, './preloads/homePreload.js'),
       }
     })
     winDetection.on('closed', () => {
@@ -282,6 +282,14 @@ ipcMain.handle('activateMonitoring', (event, obj) => {
   new Notification({
     title: "Monitoreo Iniciado",
     body: `El monitoreo ha comenzado. Si quieres detener el monitoreo, pulsa el botón en la pantalla inicial.`,
+    icon: path.join(__dirname, 'src/img/logo.png')
+  }).show()
+});
+
+ipcMain.handle('newNotification', (event, obj) => {
+  new Notification({
+    title: "Deja de Morder tus Uñas",
+    body: `Es perjudicial para tu salud!`,
     icon: path.join(__dirname, 'src/img/logo.png')
   }).show()
 });

@@ -1,35 +1,45 @@
-const tf = require('@tensorflow/tfjs');
-const tmImage = require('@teachablemachine/image');
-
 let model, webcam, labelContainer, maxPredictions;
+const URL = "https://teachablemachine.withgoogle.com/models/6a0wreOBI/";
+const FPS = 0.5;
+const interval = 1000 / FPS;
 
 async function init() {
-  const modelURL = '../teachableMachine/model.json';
-  const metadataURL = '../teachableMachine/metadata.json';
+  const modelURL = URL + "model.json";
+  const metadataURL = URL + "metadata.json";
 
   model = await tmImage.load(modelURL, metadataURL);
   maxPredictions = model.getTotalClasses();
 
-  const flip = true; // whether to flip the webcam
-  webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+  const flip = true;
+  webcam = new tmImage.Webcam(200, 200, flip);
   await webcam.setup();
   await webcam.play();
-  window.requestAnimationFrame(loop);
 
-  document.getElementById('webcam').appendChild(webcam.canvas);
+  document.getElementById("webcam-container").appendChild(webcam.canvas);
+  labelContainer = document.getElementById("label-container");
+  for (let i = 0; i < maxPredictions; i++) {
+    labelContainer.appendChild(document.createElement("div"));
+  }
+
+  loop();
 }
 
 async function loop() {
   webcam.update();
   await predict();
-  window.requestAnimationFrame(loop);
+  setTimeout(loop, interval);
 }
 
 async function predict() {
   const prediction = await model.predict(webcam.canvas);
   for (let i = 0; i < maxPredictions; i++) {
-    const classPrediction = prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
-    console.log(classPrediction);
+    const classPrediction =
+      prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    labelContainer.childNodes[i].innerHTML = classPrediction;
+  }
+  if (prediction[0].probability.toFixed(2) >= 0.8) {
+    console.log("nueva notificacion");
+    window.api.newNotification();
   }
 }
 
