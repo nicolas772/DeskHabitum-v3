@@ -15,6 +15,7 @@ let winMain = null
 let winSetting
 let winPerfil
 let winContactar
+let winDetection
 
 // Mantén un registro de las ventanas abiertas
 const openWindows = {};
@@ -147,6 +148,26 @@ const createContactarWindow = () => {
   }
 }
 
+const createDetectionWindow = () => {
+  if (!openWindows.detection) {
+    winDetection = new BrowserWindow({
+      width: 600,
+      height: 600,
+      resizable: false,
+      webPreferences: {
+        preload: path.join(__dirname, './preload/homePreload.js'),
+      }
+    })
+    winDetection.on('closed', () => {
+      openWindows.detection = null
+    })
+    winDetection.loadFile('src/views/detection.html')
+    openWindows.detection = winDetection
+  } else {
+    openWindows.detection.focus()
+  }
+}
+
 app.whenReady().then(() => {
   const storedData = userDataStore.get('userData', null);
   if (storedData) {
@@ -257,6 +278,7 @@ ipcMain.handle('moveToLogin', (event, obj) => {
 
 ipcMain.handle('activateMonitoring', (event, obj) => {
   userDataStore.set('monitoreo', 'Activado');
+  createDetectionWindow()
   new Notification({
     title: "Monitoreo Iniciado",
     body: `El monitoreo ha comenzado. Si quieres detener el monitoreo, pulsa el botón en la pantalla inicial.`,
@@ -266,6 +288,7 @@ ipcMain.handle('activateMonitoring', (event, obj) => {
 
 ipcMain.handle('deactivateMonitoring', (event, obj) => {
   userDataStore.set('monitoreo', 'Desactivado');
+  winDetection.close()
   new Notification({
     title: "Monitoreo Desactivado",
     body: `El monitoreo ha sido desactivado correctamente.`,

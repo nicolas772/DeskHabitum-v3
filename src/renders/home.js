@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
          //const data = await window.api.userData();
          //statusMonitoring.innerText = `${data.estadoMonitoreo}`;
          divDeactivateBtn.classList.remove("oculto");
-      }, 5000);
+      }, 1000);
    });
 
    deactivateBtnModal.addEventListener("click", async function () {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
          //statusMonitoring.innerText = `${data.estadoMonitoreo}`;
          obtenerYMostrarDatos(name, statusMonitoring);
          divActivateBtn.classList.remove("oculto");
-      }, 3000);
+      }, 1000);
    });
 });
 
