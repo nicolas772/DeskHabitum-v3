@@ -1,4 +1,4 @@
-const tf = require('@tensorflow/tfjs');
+/*const tf = require('@tensorflow/tfjs');
 const tmImage = require('@teachablemachine/image');
 
 let model, webcam, labelContainer, maxPredictions;
@@ -33,4 +33,4 @@ async function predict() {
   }
 }
 
-init();
+init();*/

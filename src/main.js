@@ -151,11 +151,11 @@ const createContactarWindow = () => {
 const createDetectionWindow = () => {
   if (!openWindows.detection) {
     winDetection = new BrowserWindow({
-      width: 600,
-      height: 600,
+      width: 1000,
+      height: 800,
       resizable: false,
       webPreferences: {
-        preload: path.join(__dirname, './preloads/homePreload.js'),
+        preload: path.join(__dirname, './preloads/detectionPreload.js'),
       }
     })
     winDetection.on('closed', () => {
