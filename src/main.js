@@ -155,7 +155,7 @@ const createDetectionWindow = () => {
       height: 600,
       resizable: false,
       webPreferences: {
-        preload: path.join(__dirname, './preload/homePreload.js'),
+        preload: path.join(__dirname, './preloads/homePreload.js'),
       }
     })
     winDetection.on('closed', () => {
